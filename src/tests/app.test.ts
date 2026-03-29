@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/vue'
+import { render } from '@testing-library/vue'
 import { describe, expect, it, beforeAll, vi } from 'vitest'
 import App from '../App.vue'
 
@@ -12,7 +12,7 @@ describe('App component', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
-      value: vi.fn().mockImplementation(query => ({
+      value: vi.fn().mockImplementation((query) => ({
         matches: false,
         media: query,
         onchange: null,
@@ -37,7 +37,7 @@ describe('App component', () => {
         },
       },
     })
-    
+
     // We can just check that it renders without throwing
     expect(document.querySelector('#app')).toBeTruthy()
   })
