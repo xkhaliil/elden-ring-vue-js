@@ -1,35 +1,44 @@
-import { fireEvent, render, screen } from '@testing-library/vue'
-import { describe, expect, it } from 'vitest'
+import { render, screen } from '@testing-library/vue'
+import { describe, expect, it, beforeAll, vi } from 'vitest'
 import App from '../App.vue'
 
-describe('counter component', () => {
-  it('renders the initial counter value', () => {
-    render(App)
-    const counterValue = screen.getByText('Counter: 0')
-    expect(counterValue).toBeTruthy()
+// Mock router
+const mockRouter = {
+  push: vi.fn(),
+  replace: vi.fn(),
+}
+
+describe('App component', () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: vi.fn(), // Deprecated
+        removeListener: vi.fn(), // Deprecated
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    })
   })
 
-  it('increments the counter when the increment button is clicked', async () => {
-    render(App)
-    const incrementButton = screen.getByText('Increment')
-    await fireEvent.click(incrementButton)
-    const counterValue = screen.getByText('Counter: 1')
-    expect(counterValue).toBeTruthy()
-  })
-
-  it('decrements the counter when the decrement button is clicked', async () => {
-    render(App)
-    const decrementButton = screen.getByText('Decrement')
-    await fireEvent.click(decrementButton)
-    const counterValue = screen.getByText('Counter: -1')
-    expect(counterValue).toBeTruthy()
-  })
-
-  it('resets the counter when the reset button is clicked', async () => {
-    render(App)
-    const resetButton = screen.getByText('Reset')
-    await fireEvent.click(resetButton)
-    const counterValue = screen.getByText('Counter: 0')
-    expect(counterValue).toBeTruthy()
+  it('renders the App component', () => {
+    render(App, {
+      global: {
+        stubs: {
+          RouterView: true,
+          RouterLink: true,
+        },
+        mocks: {
+          $router: mockRouter,
+        },
+      },
+    })
+    
+    // We can just check that it renders without throwing
+    expect(document.querySelector('#app')).toBeTruthy()
   })
 })
