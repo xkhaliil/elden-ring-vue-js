@@ -1,48 +1,108 @@
-# cue-project
+# Elden Ring Vue Explorer
 
-This template should help get you started developing with Vue 3 in Vite.
+Welcome to the **Elden Ring Vue Explorer**! This is a comprehensive, interactive web application built with **Vue 3**, **Vite**, and **Tailwind CSS** that lets you explore the vast world of Elden Ring. Discover details about terrifying bosses, powerful weapons, and essential items from the Lands Between.
 
-## Recommended IDE Setup
+## 🚀 Deployed Site
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[**Check out the live project here!**](#) _(Replace this link with your actual deployed URL, e.g., Vercel, Netlify, or GitHub Pages)_
 
-## Recommended Browser Setup
+---
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## 📸 Screenshots
 
-## Type Support for `.vue` Imports in TS
+Here is a glimpse of what the project looks like:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Home & Categories
 
-## Customize configuration
+<div style="display: flex; gap: 10px;">
+  <img src="./public/screenshots/homePage.png" alt="Home Page" width="400" />
+  <img src="./public/screenshots/categories.png" alt="Categories" width="400" />
+</div>
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Exploring the Lands Between
 
-## Project Setup
+<div style="display: flex; gap: 10px;">
+  <img src="./public/screenshots/bossesPage.png" alt="Bosses Page" width="400" />
+  <img src="./public/screenshots/WeaponsPage.png" alt="Weapons Page" width="400" />
+  <img src="./public/screenshots/ItemsPage.png" alt="Items Page" width="400" />
+</div>
 
-```sh
-npm install
-```
+### Detailed Views
 
-### Compile and Hot-Reload for Development
+<div style="display: flex; gap: 10px;">
+  <img src="./public/screenshots/BossesDetailPage.png" alt="Boss Detail" width="400" />
+  <img src="./public/screenshots/WeaponsDetailPage.png" alt="Weapon Detail" width="400" />
+  <img src="./public/screenshots/ItemsDetailPage.png" alt="Item Detail" width="400" />
+</div>
 
-```sh
-npm run dev
-```
+---
 
-### Type-Check, Compile and Minify for Production
+## 🛠️ Technology Stack
 
-```sh
-npm run build
-```
+- **Framework:** [Vue 3](https://vuejs.org/) (Composition API)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [shadcn-vue](https://shadcn-vue.com/)
+- **Routing:** [Vue Router](https://router.vuejs.org/)
+- **Testing:** [Vitest](https://vitest.dev/)
+- **Component Explorer:** [Storybook](https://storybook.js.org/)
+- **3D Rendering:** [Three.js](https://threejs.org/) (Used for immersive background effects)
 
-### Lint with [ESLint](https://eslint.org/)
+---
 
-```sh
-npm run lint
-```
+## 💻 Available Scripts
+
+In the project directory, you can run the following commands via `npm`:
+
+### Development & Build
+
+- **`npm run dev`**
+  Starts the Vite development server with Hot Module Replacement (HMR).
+- **`npm run build`**
+  Runs type-checking and bundles the app for production.
+- **`npm run preview`**
+  Boots up a local web server to preview your production build (`dist` folder).
+- **`npm run build-only`**
+  Builds the application for production without running type-checking.
+- **`npm run type-check`**
+  Runs the TypeScript compiler (`vue-tsc`) to check for type errors.
+- **`npm run analyze`**
+  Builds the project and automatically opens a bundle analyzer to inspect your chunk sizes.
+
+### Testing & UI
+
+- **`npm run test`**
+  Runs the unit test suite using Vitest.
+- **`npm run storybook`**
+  Starts the Storybook development environment on `localhost:6006` to browse and develop your UI components in isolation.
+- **`npm run build-storybook`**
+  Builds your Storybook into a static web app for deployment.
+
+### Code Quality (Linting & Formatting)
+
+- **`npm run lint`**
+  Runs both ESLint and Oxlint to catch and fix code quality issues.
+- **`npm run lint:eslint`**
+  Runs ESLint specifically with auto-fix enabled.
+- **`npm run lint:oxlint`**
+  Runs the lightning-fast Oxlint tool for immediate issue detection.
+- **`npm run format`**
+  Formats all your source files using Prettier.
+- **`npm run format:check`**
+  Checks if your files are properly formatted without making changes.
+- **`npm run prepare`**
+  Installs Husky for managing Git hooks (e.g., pre-commit linting).
+
+---
+
+## ⚙️ Getting Started
+
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
