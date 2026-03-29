@@ -7,7 +7,7 @@ on:
 
 jobs:
   ci:
-    name: Lint, Format and Test
+    name: Lint, Format and Test vuee
     runs-on: ubuntu-latest
 
     steps:
