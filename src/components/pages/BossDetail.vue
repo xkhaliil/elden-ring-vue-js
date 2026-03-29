@@ -216,8 +216,8 @@ onMounted(async () => {
     const found = await getBoss(id)
     if (!found) throw new Error('Boss not found')
     boss.value = found
-  } catch (e: any) {
-    error.value = e.message
+  } catch (e: unknown) {
+    error.value = e instanceof Error ? e.message : String(e)
   } finally {
     loading.value = false
   }

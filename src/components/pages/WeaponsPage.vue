@@ -366,8 +366,8 @@ onMounted(async () => {
   try {
     weapons.value = await getWeapons()
     if (weapons.value.length === 0) throw new Error('No weapons found')
-  } catch (e: any) {
-    error.value = e.message
+  } catch (e: unknown) {
+    error.value = e instanceof Error ? e.message : String(e)
   } finally {
     loading.value = false
   }

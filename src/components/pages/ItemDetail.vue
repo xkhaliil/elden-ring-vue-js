@@ -186,8 +186,8 @@ onMounted(async () => {
     const found = await getItem(id)
     if (!found) throw new Error('Item not found')
     item.value = found
-  } catch (e: any) {
-    error.value = e.message
+  } catch (e: unknown) {
+    error.value = e instanceof Error ? e.message : String(e)
   } finally {
     loading.value = false
   }

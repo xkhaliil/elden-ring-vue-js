@@ -14,7 +14,7 @@ export async function getItems(): Promise<Item[]> {
 
     if (!data.data) return []
 
-    const items: Item[] = data.data.map((item: any) => ({
+    const items: Item[] = data.data.map((item: Item) => ({
       id: item.id,
       name: item.name,
       image: item.image,

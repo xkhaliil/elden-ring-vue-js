@@ -31,8 +31,19 @@
 </template>
 
 <script setup lang="ts">
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+
+defineOptions({
+  name: 'ViewWeapons',
+})
 
 const weapons = [
   {
@@ -40,21 +51,21 @@ const weapons = [
     type: 'Katana',
     description: 'A sharp katana with excellent bleed buildup.',
     attack: '115',
-    weight: '5.5'
+    weight: '5.5',
   },
   {
     name: 'Greatsword',
     type: 'Colossal Sword',
     description: 'A massive sword requiring great strength to wield.',
     attack: '164',
-    weight: '23.0'
+    weight: '23.0',
   },
   {
     name: 'Meteorite Staff',
     type: 'Glintstone Staff',
     description: 'A staff that boosts gravity sorceries.',
     attack: '39',
-    weight: '4.4'
-  }
+    weight: '4.4',
+  },
 ]
 </script>

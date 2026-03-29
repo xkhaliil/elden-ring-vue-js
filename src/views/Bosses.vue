@@ -21,24 +21,35 @@
 </template>
 
 <script setup lang="ts">
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+
+defineOptions({
+  name: 'ViewBosses',
+})
 
 const bosses = [
   {
     name: 'Margit, the Fell Omen',
     location: 'Stormveil Castle',
-    description: 'A formidable boss encountered early in the game.'
+    description: 'A formidable boss encountered early in the game.',
   },
   {
     name: 'Godrick the Grafted',
     location: 'Stormveil Castle',
-    description: 'Demigod boss who grafts limbs onto himself.'
+    description: 'Demigod boss who grafts limbs onto himself.',
   },
   {
     name: 'Rennala, Queen of the Full Moon',
     location: 'Raya Lucaria Academy',
-    description: 'Powerful sorceress and shardbearer.'
-  }
+    description: 'Powerful sorceress and shardbearer.',
+  },
 ]
 </script>

@@ -38,6 +38,9 @@ import bossesImg from '@/assets/bosses.jpg'
 import weaponsImg from '@/assets/weapons.jpg'
 import itemsImg from '@/assets/items.jpg'
 
+defineOptions({
+  name: 'AppCategories',
+})
 const router = useRouter()
 
 const categories = [
