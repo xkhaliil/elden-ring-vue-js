@@ -4,7 +4,7 @@ Welcome to the **Elden Ring Vue Explorer**! This is a comprehensive, interactive
 
 ## 🚀 Deployed Site
 
-[**Check out the live project here!**](#) _(Replace this link with your actual deployed URL, e.g., Vercel, Netlify, or GitHub Pages)_
+[**Check out the live project here!**](https://elden-ring-vue-js.vercel.app/)
 
 ---
 
@@ -12,28 +12,53 @@ Welcome to the **Elden Ring Vue Explorer**! This is a comprehensive, interactive
 
 Here is a glimpse of what the project looks like:
 
-### Home & Categories
+### Home Page
 
-<div style="display: flex; gap: 10px;">
-  <img src="./public/screenshots/homePage.png" alt="Home Page" width="400" />
-  <img src="./public/screenshots/categories.png" alt="Categories" width="400" />
-</div>
+The main landing page of the application featuring an immersive design to welcome tarnished explorers.
 
-### Exploring the Lands Between
+<img src="./public/screenshots/homePage.png" alt="Home Page" width="800" />
 
-<div style="display: flex; gap: 10px;">
-  <img src="./public/screenshots/bossesPage.png" alt="Bosses Page" width="400" />
-  <img src="./public/screenshots/WeaponsPage.png" alt="Weapons Page" width="400" />
-  <img src="./public/screenshots/ItemsPage.png" alt="Items Page" width="400" />
-</div>
+### Categories
 
-### Detailed Views
+Navigate through the vast lore by selecting your desired category: Bosses, Weapons, or Items.
 
-<div style="display: flex; gap: 10px;">
-  <img src="./public/screenshots/BossesDetailPage.png" alt="Boss Detail" width="400" />
-  <img src="./public/screenshots/WeaponsDetailPage.png" alt="Weapon Detail" width="400" />
-  <img src="./public/screenshots/ItemsDetailPage.png" alt="Item Detail" width="400" />
-</div>
+<img src="./public/screenshots/categories.png" alt="Categories" width="800" />
+
+### Bosses List
+
+A comprehensive list of all the terrifying bosses you can encounter in the Lands Between.
+
+<img src="./public/screenshots/bossesPage.png" alt="Bosses Page" width="800" />
+
+### Boss Detail View
+
+In-depth lore, stats, and details about a specific boss.
+
+<img src="./public/screenshots/BossesDetailPage.png" alt="Boss Detail" width="800" />
+
+### Weapons List
+
+Browse through the massive arsenal of weapons available in the game.
+
+<img src="./public/screenshots/WeaponsPage.png" alt="Weapons Page" width="800" />
+
+### Weapon Detail View
+
+Detailed statistics, scaling, and requirements for a specific weapon.
+
+<img src="./public/screenshots/WeaponsDetailPage.png" alt="Weapon Detail" width="800" />
+
+### Items List
+
+Explore the various consumables, key items, and materials scattered across the world.
+
+<img src="./public/screenshots/ItemsPage.png" alt="Items Page" width="800" />
+
+### Item Detail View
+
+Learn about the effects and lore of a specific item.
+
+<img src="./public/screenshots/ItemsDetailPage.png" alt="Item Detail" width="800" />
 
 ---
 
