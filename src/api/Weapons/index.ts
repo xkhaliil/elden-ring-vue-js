@@ -96,3 +96,4 @@ export async function getWeapon(id: string): Promise<Weapon | null> {
     return null
   }
 }
+  
