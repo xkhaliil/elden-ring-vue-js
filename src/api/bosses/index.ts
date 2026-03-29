@@ -15,10 +15,10 @@ export async function getBosses(): Promise<Boss[]> {
 
     if (!data.data) return []
 
-    const bosses: Boss[] = data.data.map((boss: any) => {
+    const bosses: Boss[] = data.data.map((boss: Boss) => {
       let hp = 0
       if (typeof boss.healthPoints === 'string') {
-        hp = parseInt(boss.healthPoints.replace(/,/g, '')) || 0
+        hp = parseInt((boss.healthPoints as string).replace(/,/g, '')) || 0
       } else if (typeof boss.healthPoints === 'number') {
         hp = boss.healthPoints
       }

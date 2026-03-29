@@ -34,6 +34,10 @@
 <script setup lang="ts">
 import PixelLiquidBg from '@/components/unlumen-ui/pixel-liquid-bg.vue'
 
+defineOptions({
+  name: 'AppHero'
+})
+
 function scrollToCategories() {
   const categoriesSection = document.getElementById('categories')
   if (categoriesSection) {

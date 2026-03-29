@@ -34,6 +34,10 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
+defineOptions({
+  name: 'ViewItems'
+})
+
 const items = [
   {
     name: 'Flask of Crimson Tears',

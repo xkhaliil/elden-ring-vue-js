@@ -271,8 +271,8 @@ onMounted(async () => {
   try {
     items.value = await getItems()
     if (items.value.length === 0) throw new Error('No items found')
-  } catch (e: any) {
-    error.value = e.message
+  } catch (e: unknown) {
+    error.value = e instanceof Error ? e.message : String(e)
   } finally {
     loading.value = false
   }

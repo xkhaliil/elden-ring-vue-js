@@ -5,15 +5,7 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Hero from '@/components/hero.vue'
 import Categories from '@/components/categories.vue'
-
-export default {
-  name: 'HomePage',
-  components: {
-    Hero,
-    Categories
-  }
-}
 </script>

@@ -24,6 +24,10 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
+defineOptions({
+  name: 'ViewBosses'
+})
+
 const bosses = [
   {
     name: 'Margit, the Fell Omen',

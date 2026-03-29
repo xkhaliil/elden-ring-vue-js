@@ -210,6 +210,7 @@ void main(){
   gl_FragColor = vec4(v, 0.0, 1.0);
 }`
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const viscous_frag = /* glsl */ `
 precision highp float;
 uniform sampler2D velocity;
@@ -646,14 +647,22 @@ onMounted(() => {
       Math.max(mouse.coords.y, -1 + cs * cy * 2 + cy * 2),
       1 - cs * cy * 2 - cy * 2,
     )
-    const eu = (efMesh.material as THREE.RawShaderMaterial).uniforms as any
-    eu.force.value.set((mouse.diff.x / 2) * mf, (mouse.diff.y / 2) * mf)
-    eu.center.value.set(clampedX, clampedY)
-    eu.scale.value.set(cs, cs)
-    r.setRenderTarget(fbos.vel_1 as any)
+    const eu = (efMesh.material as THREE.RawShaderMaterial).uniforms as Record<
+      string,
+      { value: unknown }
+    >
+    if (eu.force && eu.center && eu.scale) {
+      ;(eu.force.value as THREE.Vector2).set((mouse.diff.x / 2) * mf, (mouse.diff.y / 2) * mf)
+      ;(eu.center.value as THREE.Vector2).set(clampedX, clampedY)
+      ;(eu.scale.value as THREE.Vector2).set(cs, cs)
+    }
+    r.setRenderTarget(fbos.vel_1 as THREE.WebGLRenderTarget)
     r.render(efScene, efCam)
     r.setRenderTarget(null)
-    ;(divergencePass.uniforms as any).velocity.value = fbos.vel_1!.texture
+    const divUniforms = divergencePass.uniforms as Record<string, { value: unknown }>
+    if (divUniforms.velocity) {
+      divUniforms.velocity.value = fbos.vel_1!.texture
+    }
     divergencePass.render()
 
     let p_in = fbos.p0,
@@ -666,7 +675,10 @@ onMounted(() => {
         p_in = fbos.p1
         p_out = fbos.p0
       }
-      ;(poisPass.uniforms as any).pressure.value = p_in!.texture
+      const poisUniforms = poisPass.uniforms as Record<string, { value: unknown }>
+      if (poisUniforms.pressure) {
+        poisUniforms.pressure.value = p_in!.texture
+      }
       poisPass.render(p_out)
     }
     pressurePass.uniforms.pressure!.value = p_out!.texture

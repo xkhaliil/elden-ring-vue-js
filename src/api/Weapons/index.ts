@@ -18,7 +18,7 @@ export async function getWeapons(): Promise<Weapon[]> {
 
     if (!data.data) return []
 
-    const weapons: Weapon[] = data.data.map((weapon: any) => ({
+    const weapons: Weapon[] = data.data.map((weapon: Weapon) => ({
       id: weapon.id,
       name: weapon.name,
       image: weapon.image,
@@ -26,15 +26,15 @@ export async function getWeapons(): Promise<Weapon[]> {
       category: weapon.category,
       weight: weapon.weight,
       attack:
-        weapon.attack && weapon.attack.length > 0
+        weapon.attack && weapon.attack.length > 0 && weapon.attack[0]
           ? [{ name: weapon.attack[0].name, amount: weapon.attack[0].amount }]
           : [],
       defence:
-        weapon.defence && weapon.defence.length > 0
+        weapon.defence && weapon.defence.length > 0 && weapon.defence[0]
           ? [{ name: weapon.defence[0].name, amount: weapon.defence[0].amount }]
           : [],
       requiredAttributes:
-        weapon.requiredAttributes && weapon.requiredAttributes.length > 0
+        weapon.requiredAttributes && weapon.requiredAttributes.length > 0 && weapon.requiredAttributes[0]
           ? [
               {
                 name: weapon.requiredAttributes[0].name,
@@ -43,7 +43,7 @@ export async function getWeapons(): Promise<Weapon[]> {
             ]
           : [],
       scalesWith:
-        weapon.scalesWith && weapon.scalesWith.length > 0
+        weapon.scalesWith && weapon.scalesWith.length > 0 && weapon.scalesWith[0]
           ? [{ name: weapon.scalesWith[0].name, scaling: weapon.scalesWith[0].scaling }]
           : [],
     }))
