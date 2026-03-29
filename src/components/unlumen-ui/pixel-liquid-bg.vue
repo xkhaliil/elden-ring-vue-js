@@ -244,7 +244,7 @@ function writePaletteData(data: Uint8Array, stops: string[]) {
 }
 
 function makePaletteTexture(stops: string[]): THREE.DataTexture {
-  const arr = stops.length === 1 ? [stops[0], stops[0]] : stops
+  const arr = stops.length === 1 ? [stops[0] as string, stops[0] as string] : stops
   const data = new Uint8Array(arr.length * 4)
   writePaletteData(data, arr)
   const tex = new THREE.DataTexture(data, arr.length, 1, THREE.RGBAFormat)
@@ -261,9 +261,9 @@ function makeBayerTexture(): THREE.DataTexture {
   const raw = [0, 136, 34, 170, 204, 68, 238, 102, 51, 187, 17, 153, 255, 119, 221, 85]
   const data = new Uint8Array(16 * 4)
   for (let i = 0; i < 16; i++) {
-    data[i * 4] = raw[i]
-    data[i * 4 + 1] = raw[i]
-    data[i * 4 + 2] = raw[i]
+    data[i * 4] = raw[i] as number
+    data[i * 4 + 1] = raw[i] as number
+    data[i * 4 + 2] = raw[i] as number
     data[i * 4 + 3] = 255
   }
   const tex = new THREE.DataTexture(data, 4, 4, THREE.RGBAFormat)
@@ -373,6 +373,7 @@ class MouseGL {
   private _onTouch(e: TouchEvent) {
     if (e.touches.length !== 1) return
     const t = e.touches[0]
+    if (!t) return
     this.onInteract?.()
     this._set(t.clientX, t.clientY)
   }
@@ -645,11 +646,11 @@ onMounted(() => {
       Math.max(mouse.coords.y, -1 + cs * cy * 2 + cy * 2),
       1 - cs * cy * 2 - cy * 2,
     )
-    const eu = (efMesh.material as THREE.RawShaderMaterial).uniforms
+    const eu = (efMesh.material as THREE.RawShaderMaterial).uniforms as any
     eu.force.value.set((mouse.diff.x / 2) * mf, (mouse.diff.y / 2) * mf)
     eu.center.value.set(clampedX, clampedY)
     eu.scale.value.set(cs, cs)
-    r.setRenderTarget(fbos.vel_1)
+    r.setRenderTarget(fbos.vel_1 as any)
     r.render(efScene, efCam)
     r.setRenderTarget(null)
     ;(divergencePass.uniforms as any).velocity.value = fbos.vel_1!.texture
@@ -665,7 +666,7 @@ onMounted(() => {
         p_in = fbos.p1
         p_out = fbos.p0
       }
-      poisPass.uniforms.pressure.value = p_in!.texture
+      ;(poisPass.uniforms as any).pressure.value = p_in!.texture
       poisPass.render(p_out)
     }
     pressurePass.uniforms.pressure!.value = p_out!.texture
