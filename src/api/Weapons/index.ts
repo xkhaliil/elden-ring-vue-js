@@ -5,10 +5,10 @@ export interface Weapon {
   description: string
   category: string
   weight: number
-  attack: [{ name: string; amount: number }]
-  defence: [{ name: string; amount: number }]
-  requiredAttributes: [{ name: string; amount: number }]
-  scalesWith: [{ name: string; scaling: string }]
+  attack: { name: string; amount: number }[]
+  defence: { name: string; amount: number }[]
+  requiredAttributes: { name: string; amount: number }[]
+  scalesWith: { name: string; scaling: string }[]
 }
 
 export async function getWeapons(): Promise<Weapon[]> {
@@ -96,4 +96,3 @@ export async function getWeapon(id: string): Promise<Weapon | null> {
     return null
   }
 }
-  
