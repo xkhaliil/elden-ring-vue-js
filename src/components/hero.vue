@@ -35,7 +35,7 @@
 import PixelLiquidBg from '@/components/unlumen-ui/pixel-liquid-bg.vue'
 
 defineOptions({
-  name: 'AppHero'
+  name: 'AppHero',
 })
 
 function scrollToCategories() {

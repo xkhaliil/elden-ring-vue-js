@@ -31,11 +31,18 @@
 </template>
 
 <script setup lang="ts">
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
 defineOptions({
-  name: 'ViewItems'
+  name: 'ViewItems',
 })
 
 const items = [
@@ -44,21 +51,21 @@ const items = [
     type: 'Consumable',
     description: 'Restores HP when consumed.',
     effect: 'Restores HP',
-    duration: 'Instant'
+    duration: 'Instant',
   },
   {
     name: 'Rune Arc',
     type: 'Consumable',
     description: 'Activates the power of a Great Rune.',
     effect: 'Activates Great Rune',
-    duration: 'Until death'
+    duration: 'Until death',
   },
   {
     name: 'Golden Rune [1]',
     type: 'Consumable',
     description: 'Grants runes when consumed.',
     effect: 'Grants 200 runes',
-    duration: 'Instant'
-  }
+    duration: 'Instant',
+  },
 ]
 </script>

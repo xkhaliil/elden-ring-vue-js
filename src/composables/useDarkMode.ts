@@ -20,7 +20,7 @@ export function useDarkMode() {
   onMounted(() => {
     const savedTheme = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
+
     isDark.value = savedTheme ? savedTheme === 'dark' : prefersDark
     updateTheme()
   })
@@ -29,6 +29,6 @@ export function useDarkMode() {
 
   return {
     isDark,
-    toggleDarkMode
+    toggleDarkMode,
   }
 }

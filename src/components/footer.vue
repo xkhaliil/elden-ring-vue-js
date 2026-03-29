@@ -23,6 +23,6 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'AppFooter'
+  name: 'AppFooter',
 })
 </script>

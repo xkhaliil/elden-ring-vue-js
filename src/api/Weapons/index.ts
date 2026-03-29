@@ -34,7 +34,9 @@ export async function getWeapons(): Promise<Weapon[]> {
           ? [{ name: weapon.defence[0].name, amount: weapon.defence[0].amount }]
           : [],
       requiredAttributes:
-        weapon.requiredAttributes && weapon.requiredAttributes.length > 0 && weapon.requiredAttributes[0]
+        weapon.requiredAttributes &&
+        weapon.requiredAttributes.length > 0 &&
+        weapon.requiredAttributes[0]
           ? [
               {
                 name: weapon.requiredAttributes[0].name,

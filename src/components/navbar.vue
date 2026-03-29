@@ -78,7 +78,7 @@
 import { useDarkMode } from '@/composables/useDarkMode'
 
 defineOptions({
-  name: 'AppNavbar'
+  name: 'AppNavbar',
 })
 
 const { isDark, toggleDarkMode } = useDarkMode()

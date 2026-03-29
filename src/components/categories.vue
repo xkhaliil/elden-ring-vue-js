@@ -39,7 +39,7 @@ import weaponsImg from '@/assets/weapons.jpg'
 import itemsImg from '@/assets/items.jpg'
 
 defineOptions({
-  name: 'AppCategories'
+  name: 'AppCategories',
 })
 const router = useRouter()
 
