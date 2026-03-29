@@ -668,8 +668,8 @@ onMounted(() => {
       poisPass.uniforms.pressure.value = p_in!.texture
       poisPass.render(p_out)
     }
-    pressurePass.uniforms.pressure.value = p_out!.texture
-    pressurePass.uniforms.velocity.value = fbos.vel_1!.texture
+    pressurePass.uniforms.pressure!.value = p_out!.texture
+    pressurePass.uniforms.velocity!.value = fbos.vel_1!.texture
     pressurePass.render()
   }
 
@@ -707,7 +707,7 @@ onMounted(() => {
     writePaletteData(palette.image.data as Uint8Array, stops)
     palette.needsUpdate = true
     const bg = getBgColor(nowDark)
-    ;(outputUniforms.bgColor.value as THREE.Vector4).set(bg.x, bg.y, bg.z, bg.w)
+    ;(outputUniforms.bgColor!.value as THREE.Vector4).set(bg.x, bg.y, bg.z, bg.w)
   })
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 
@@ -726,29 +726,38 @@ onMounted(() => {
     cellScale.set(1 / nw, 1 / nh)
     fboSize.set(nw, nh)
     for (const k in fbos) fbos[k]!.setSize(fboSize.x, fboSize.y)
-    ;(outputUniforms.uRes.value as THREE.Vector2).set(gl.width, gl.height)
+    ;(outputUniforms.uRes!.value as THREE.Vector2).set(gl.width, gl.height)
   })
   ro.observe(container)
 
   // ── Render loop ───────────────────────────────────────────────────────────
   let raf = 0,
-    running = true
+    running = true,
+    lastFrameTime = 0
 
-  const loop = () => {
+  const loop = (timestamp: number) => {
     if (!running) return
-    raf = requestAnimationFrame(loop)
+
+    // Throttle to 30fps (33.33ms per frame)
+    if (timestamp - lastFrameTime < 33.33) {
+      raf = requestAnimationFrame(loop)
+      return
+    }
+    lastFrameTime = timestamp
+
     driver?.update()
     mouse.update()
     gl.update()
-    outputUniforms.uTime.value = gl.time
+    outputUniforms.uTime!.value = gl.time
     simUpdate()
     const r = gl.renderer
     if (r) {
       r.setRenderTarget(null)
       r.render(outputScene, outputCam)
     }
+    raf = requestAnimationFrame(loop)
   }
-  loop()
+  raf = requestAnimationFrame(loop)
 
   const onVisibility = () => {
     if (document.hidden) {
@@ -756,7 +765,7 @@ onMounted(() => {
       cancelAnimationFrame(raf)
     } else {
       running = true
-      loop()
+      raf = requestAnimationFrame(loop)
     }
   }
   document.addEventListener('visibilitychange', onVisibility)

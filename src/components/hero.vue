@@ -12,10 +12,11 @@
 
       <div>
         <img
-          src="@/assets/eldenring_transparent.png"
+          src="@/assets/eldenring_transparent.webp"
           alt="Logo"
           width="200"
-          height="200"
+          height="347"
+          fetchpriority="high"
           class="shadow-4xl transition-transform duration-300 hover:scale-110"
         />
       </div>

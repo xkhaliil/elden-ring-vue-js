@@ -1,26 +1,24 @@
 <template>
   <div id="app">
     <Navbar />
-    <Hero />
-    <Categories />
 
     <main>
       <router-view />
     </main>
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from './components/navbar.vue'
-import Hero from './components/hero.vue'
-import Categories from './components/categories.vue'
+import Footer from './components/footer.vue'
 
 export default {
   name: 'App',
   components: {
     Navbar,
-    Hero,
-    Categories,
+    Footer,
   },
 }
 </script>
