@@ -9,6 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from './components/navbar.vue'
+import Navbar from './components/AppNavbar.vue'
 import AppFooter from './components/footer.vue'
 </script>
