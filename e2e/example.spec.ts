@@ -55,3 +55,11 @@ test('click on items link and be routered to items page', async ({ page }) => {
   await itemsLink.click()
   await expect(page).toHaveURL('http://localhost:5173/items')
 })
+
+test('failing test', async ({ page }) => {
+  await page.goto('http://localhost:5173/')
+  const itemsLink = page.getByText('Search Items')
+  await expect(itemsLink).toBeVisible()
+  await itemsLink.click()
+  await expect(page).toHaveURL('http://localhost:5173/bosses')
+})
