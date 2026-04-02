@@ -1,57 +1,65 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import Card from './Card.vue'
-import bossesImg from '@/assets/bosses.jpg'
-import weaponsImg from '@/assets/weapons.jpg'
-import itemsImg from '@/assets/items.jpg'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
-const meta: Meta<typeof Card> = {
-  title: 'Components/Card',
+const meta: Meta<any> = {
+  title: 'UI/Card',
   component: Card,
   tags: ['autodocs'],
-  decorators: [
-    () => ({
-      template: `
-        <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
-          <story />
-        </div>
-      `,
-    }),
-  ],
-  argTypes: {
-    title: { control: 'text' },
-    description: { control: 'text' },
-    buttonLabel: { control: 'text' },
-    imageSrc: { control: 'text' },
-    onClick: { action: 'clicked' },
-  },
+  render: (args: any) => ({
+    components: {
+      Card,
+      CardHeader,
+      CardTitle,
+      CardDescription,
+      CardContent,
+      CardFooter,
+      Button,
+      Input,
+      Label,
+    },
+    setup() {
+      return { args }
+    },
+    template: `
+      <Card class="w-[350px]" v-bind="args">
+        <CardHeader>
+          <CardTitle>Create project</CardTitle>
+          <CardDescription>Deploy your new project in one-click.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <div class="grid items-center w-full gap-4">
+              <div class="flex flex-col space-y-1.5">
+                <Label for="name">Name</Label>
+                <Input id="name" placeholder="Name of your project" />
+              </div>
+              <div class="flex flex-col space-y-1.5">
+                <Label for="framework">Framework</Label>
+                <Input id="framework" placeholder="Vue, React, Svelte..." />
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter class="flex justify-between px-6 pb-6">
+          <Button variant="outline">Cancel</Button>
+          <Button>Deploy</Button>
+        </CardFooter>
+      </Card>
+    `,
+  }),
 }
 
+type Story = StoryObj<any>
 export default meta
-type Story = StoryObj<typeof Card>
 
-export const Bosses: Story = {
-  args: {
-    title: 'Bosses',
-    description: 'Explore the bosses of Elden Ring',
-    buttonLabel: 'Search Bosses',
-    imageSrc: bossesImg,
-  },
-}
-
-export const Weapons: Story = {
-  args: {
-    title: 'Weapons',
-    description: 'Explore the weapons of Elden Ring',
-    buttonLabel: 'Search Weapons',
-    imageSrc: weaponsImg,
-  },
-}
-
-export const Items: Story = {
-  args: {
-    title: 'Items',
-    description: 'Explore the items of Elden Ring',
-    buttonLabel: 'Search Items',
-    imageSrc: itemsImg,
-  },
-}
+export const Default: Story = {}

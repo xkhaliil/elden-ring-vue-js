@@ -42,8 +42,8 @@ const meta: Meta<typeof Header> = {
   },
 }
 
-export default meta
 type Story = StoryObj<typeof Header>
+export default meta
 
 export const onclicktoBosses: Story = {
   play: async ({ args, canvasElement }) => {
