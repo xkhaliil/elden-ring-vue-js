@@ -1,53 +1,96 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { fn } from 'storybook/test'
+import { Button } from '@/components/ui/button'
+import { Mail, Loader2, ChevronRight } from 'lucide-vue-next'
 
-import Button from './Button.vue'
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
-  title: 'Example/Button',
+const meta: Meta<any> = {
+  title: 'UI/Button',
   component: Button,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
-  },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    variant: {
+      control: 'select',
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+    },
+    size: {
+      control: 'select',
+      options: ['default', 'sm', 'lg', 'icon', 'icon-sm', 'icon-lg'],
+    },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { onClick: fn() },
-} satisfies Meta<typeof Button>
+  args: {
+    variant: 'default',
+    size: 'default',
+  },
+  render: (args: any) => ({
+    components: { Button, Mail, Loader2, ChevronRight },
+    setup() {
+      return { args }
+    },
+    template: `
+      <div class="flex items-center gap-4">
+        <Button v-bind="args">Click Me</Button>
+      </div>
+    `,
+  }),
+}
 
+type Story = StoryObj<any>
 export default meta
-type Story = StoryObj<typeof meta>
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
-  args: {
-    primary: true,
-    label: 'Button',
-  },
+export const Default: Story = {}
+export const Destructive: Story = { args: { variant: 'destructive' } }
+export const Outline: Story = { args: { variant: 'outline' } }
+export const Secondary: Story = { args: { variant: 'secondary' } }
+export const Ghost: Story = { args: { variant: 'ghost' } }
+export const Link: Story = { args: { variant: 'link' } }
+
+export const WithIcon: Story = {
+  render: (args: any) => ({
+    components: { Button, Mail },
+    setup() {
+      return { args }
+    },
+    template: `
+      <Button v-bind="args">
+        <Mail class="w-4 h-4 mr-2" />
+        Login with Email
+      </Button>
+    `,
+  }),
 }
 
-export const Secondary: Story = {
+export const Loading: Story = {
   args: {
-    label: 'Button',
+    disabled: true,
   },
+  render: (args: any) => ({
+    components: { Button, Loader2 },
+    setup() {
+      return { args }
+    },
+    template: `
+      <Button v-bind="args">
+        <Loader2 class="w-4 h-4 mr-2 animate-spin" />
+        Please wait
+      </Button>
+    `,
+  }),
 }
 
-export const Large: Story = {
+export const IconOnly: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
+    variant: 'outline',
+    size: 'icon',
   },
-}
-
-export const Small: Story = {
-  args: {
-    size: 'small',
-    label: 'Button',
-  },
+  render: (args: any) => ({
+    components: { Button, ChevronRight },
+    setup() {
+      return { args }
+    },
+    template: `
+      <Button v-bind="args">
+        <ChevronRight class="w-4 h-4" />
+      </Button>
+    `,
+  }),
 }
