@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { Button } from '@/components/ui/button'
 import { Mail, Loader2, ChevronRight } from 'lucide-vue-next'
