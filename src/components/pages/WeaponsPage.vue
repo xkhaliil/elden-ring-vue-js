@@ -8,14 +8,14 @@
       :style="{ backgroundImage: noiseUrl, backgroundSize: '200px 200px' }"
     ></div>
 
-    <div class="h-px w-full bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
+    <div class="h-px w-full bg-linear-to-r from-transparent via-red-600 to-transparent"></div>
 
     <div class="mx-auto max-w-5xl px-6 py-16">
       <div class="mb-16 text-center">
         <div class="mb-4 flex items-center justify-center gap-3 text-red-600">
-          <div class="h-px w-16 bg-gradient-to-r from-transparent to-red-600"></div>
+          <div class="h-px w-16 bg-linear-to-r from-transparent to-red-600"></div>
           <Swords class="h-5 w-5" />
-          <div class="h-px w-16 bg-gradient-to-l from-transparent to-red-600"></div>
+          <div class="h-px w-16 bg-linear-to-l from-transparent to-red-600"></div>
         </div>
         <h1
           class="mb-3 text-6xl font-bold tracking-widest text-red-600"
@@ -32,9 +32,9 @@
           Instruments of ruin, forged in the Lands Between
         </p>
         <div class="mt-6 flex items-center justify-center gap-3 text-red-700 opacity-60">
-          <div class="h-px w-24 bg-gradient-to-r from-transparent to-red-700"></div>
+          <div class="h-px w-24 bg-linear-to-r from-transparent to-red-700"></div>
           <div class="h-1.5 w-1.5 rotate-45 bg-red-700"></div>
-          <div class="h-px w-24 bg-gradient-to-l from-transparent to-red-700"></div>
+          <div class="h-px w-24 bg-linear-to-l from-transparent to-red-700"></div>
         </div>
       </div>
 
@@ -169,7 +169,7 @@
                   class="h-full w-full object-cover opacity-75 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
                 />
                 <div
-                  class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-stone-900 to-transparent"
+                  class="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-stone-900 to-transparent"
                 ></div>
               </template>
               <div v-else class="flex h-full w-full items-center justify-center">
