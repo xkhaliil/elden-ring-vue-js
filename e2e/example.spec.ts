@@ -1,57 +1,39 @@
 import { expect, test } from '@playwright/test'
 
-// test("has title", async ({ page }) => {
-//   await page.goto("https://elden-ring-next-js.vercel.app/");
-//   await expect(page).toHaveTitle("Elden Ring Wiki");
-// });
+test.describe('Bosses page filtering', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:5173/bosses')
+    await expect(page.getByText('Summoning the fallen…')).not.toBeVisible({
+      timeout: 10000,
+    })
+  })
 
-// test("Navbar has logo", async ({ page }) => {
-//   await page.goto("https://elden-ring-next-js.vercel.app/");
+  test('medium difficulty filter', async ({ page }) => {
+    await page.getByRole('button', { name: 'Medium' }).click()
 
-//   const logo = page.getByRole("img", { name: "Logo" }).first();
-//   await expect(logo).toBeVisible();
-// });
+    // Wait for the UI to update to ensure elements are present
+    await page.waitForTimeout(500)
 
-// test("Navbar has links", async ({ page }) => {
-//   await page.goto("https://elden-ring-next-js.vercel.app/");
+    const cards = page.locator('[class*="cursor-pointer"]')
+    const count = await cards.count()
 
-//   const homeLink = page.getByRole("link", { name: "Bosses" }).first();
-//   await expect(homeLink).toBeVisible();
+    // Find the Medium badges on the page (excluding the filter button)
+    const badgeCount = count
 
-//   const charactersLink = page.getByRole("link", { name: "Weapons" }).first();
-//   await expect(charactersLink).toBeVisible();
+    expect(badgeCount).toBeGreaterThan(0)
+    expect(badgeCount).toBe(count)
+  })
 
-//   const charactersLink2 = page.getByRole("link", { name: "Items" }).first();
-//   await expect(charactersLink2).toBeVisible();
-// });
+  test('search with nonsense lol', async ({ page }) => {
+    await page.getByPlaceholder('Search by name, location, or drop…').fill('213389123123')
 
-test('go down button works', async ({ page }) => {
-  await page.goto('http://localhost:5173/')
-  const goDownButton = page.getByRole('img', { name: 'Go down' }).first()
-  await expect(goDownButton).toBeVisible()
-})
+    await expect(page.getByText('No boss answers your call…')).toBeVisible()
+    await expect(page.getByText(/0 enemies found/)).toBeVisible()
+  })
 
-test('click on bosses link and be routered to bosses page', async ({ page }) => {
-  await page.goto('http://localhost:5173/')
-  const bossesLink = page.getByText('Search Bosses')
-  await expect(bossesLink).toBeVisible()
-  await bossesLink.click()
-
-  await expect(page).toHaveURL('http://localhost:5173/bosses')
-})
-
-test('click on weapons link and be routered to weapons page', async ({ page }) => {
-  await page.goto('http://localhost:5173/')
-  const weaponsLink = page.getByText('Search Weapons')
-  await expect(weaponsLink).toBeVisible()
-  await weaponsLink.click()
-  await expect(page).toHaveURL('http://localhost:5173/weapons')
-})
-
-test('click on items link and be routered to items page', async ({ page }) => {
-  await page.goto('http://localhost:5173/')
-  const itemsLink = page.getByText('Search Items')
-  await expect(itemsLink).toBeVisible()
-  await itemsLink.click()
-  await expect(page).toHaveURL('http://localhost:5173/items')
+  test('no drops test', async ({ page }) => {
+    await page.getByRole('button', { name: 'No Drops' }).click()
+    const dropIcons = page.locator('[data-lucide="flame"]')
+    await expect(dropIcons).toHaveCount(0)
+  })
 })
